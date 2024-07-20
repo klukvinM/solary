@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Solarian Clicker</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #0a2fff;
+    }
+
+    .choice-screen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .choice-button {
+      padding: 20px 40px;
+      margin: 0 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+      background-color: #4CAF50; /* Зеленый */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    #gameScreen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url("sun-background.jpg"); /* Задний фон для Солнца */
+      transition: background-image 0.5s ease; /* Плавный переход фона */
+    }
+
+    #gameScreen.moon {
+      background-image: url("moon-background.jpg"); /* Задний фон для Луны */
+    }
+
+    #energyCounter {
+      font-size: 2em;
+      margin-top: 20px;
+      color: white; 
+    }
+
+    #solarianCoin {
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    #solarianCoin:active {
+      transform: scale(0.95);
+    }
+
+    #solarianCoin.moon-touch {
+      animation: moonTouch 0.5s ease;
+    }
+
+    @keyframes moonTouch {
+      0% { transform: scale(1); box-shadow: 0 0 5px 5px lightblue; }
+      50% { transform: scale(1.1); box-shadow: 0 0 10px 10px lightblue; }
+      100% { transform: scale(1); box-shadow: 0 0 5px 5px lightblue; }
+    }
+
+    #upgrades {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .upgrade-button {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #ddd;
+      border: 1px solid #aaa;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #moonCrystal {
+      width: 829px;
+      height: 732px;
+      background-image: url("moon-crystal.png"); 
+      background-size: cover;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      cursor: pointer;
+      transition: opacity 0.5s ease;
+    }
+
+    #moonCrystal.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <audio id="coinClickSound" preload="auto">
+    <source src="coin-click.mp3" type="audio/mpeg">
+    <source src="coin-click.wav" type="audio/wav">
+  </audio>
+
+  <audio id="moonTouchSound" preload="auto">
+    <source src="moon-touch.mp3" type="audio/mpeg">
+    <source src="moon-touch.wav" type="audio/wav">
+  </audio>
+
+  <audio id="crystalCollectSound" preload="auto">
+    <source src="crystal-collect.mp3" type="audio/mpeg">
+    <source src="crystal-collect.wav" type="audio/wav">
+  </audio>
+
+  <div class="choice-screen" id="choiceScreen">
+    <h1>Выбери свою сторону:</h1>
+    <button class="choice-button" id="sunChoice">Солнце</button>
+    <button class="choice-button" id="moonChoice">Луна</button>
+  </div>
+
+  <div id="gameScreen" style="display: none;">
+    <div id="energyCounter">Энергия: 0</div>
+    <img src="solarian_coin.png" alt="Solarian Coin" id="solarianCoin" width="200">
+    <div id="moonCrystal"></div> 
+    <div id="upgrades"></div>
+  </div>
+
+  <script>
+    const sunChoiceBtn = document.getElementById('sunChoice');
+    const moonChoiceBtn = document.getElementById('moonChoice');
+    const choiceScreen = document.getElementById('choiceScreen');
+    const gameScreen = document.getElementById('gameScreen');
+    const energyCounter = document.getElementById('energyCounter');
+    const solarianCoin = document.getElementById('solarianCoin');
+    const upgradesContainer = document.getElementById('upgrades');
+    const moonCrystal = document.getElementById('moonCrystal');
+
+    const coinClickSound = document.getElementById('coinClickSound');
+    const moonTouchSound = document.getElementById('moonTouchSound');
+    const crystalCollectSound = document.getElementById('crystalCollectSound');
+
+    let energy = 0;
+    let chosenSide = '';
+    let clickMultiplier = 1;
+    let moonTouchActive = false;
+    let moonCrystalTimeout;
+
+    sunChoiceBtn.addEventListener('click', () => startGame('sun'));
+    moonChoiceBtn.addEventListener('click', () => startGame('moon'));
+
+    function startGame(side) {
+      chosenSide = side;
+      choiceScreen.style.display = 'none';
+      gameScreen.style.display = 'flex';
+
+      if (side === 'moon') {
+        gameScreen.classList.add('moon');
+      }
+
+      showUpgrades(side);
+
+      if (side === 'moon' && upgrades.moon[2].level > 0) {
+        startMoonCrystalTimer();
+      }
+    }
+
+    solarianCoin.addEventListener('click', () => {
+      energy += clickMultiplier;
+      energyCounter.textContent = `Энергия: ${energy}`;
+      coinClickSound.currentTime = 0; 
+      coinClickSound.play(); 
+
+      if (chosenSide === 'moon' && upgrades.moon[0].level > 0 && !moonTouchActive) {
+        if (Math.random() < 0.04 * upgrades.moon[0].level) { 
+          activateMoonTouch();
+        }
+      }
+    });
+
+    function activateMoonTouch() {
+      moonTouchActive = true;
+      solarianCoin.classList.add('moon-touch');
+      clickMultiplier *= upgrades.moon[0].multiplier;
+      moonTouchSound.currentTime = 0;
+      moonTouchSound.play();
+
+      setTimeout(() => {
+        moonTouchActive = false;
+        solarianCoin.classList.remove('moon-touch');
+        clickMultiplier /= upgrades.moon[0].multiplier;
+      }, 4000); 
+    }
+
+    moonCrystal.addEventListener('click', () => {
+      if (moonCrystal.classList.contains('active')) {
+        const crystalValue = 15 * upgrades.moon[2].level;
+        energy += crystalValue;
+        energyCounter.textContent = `Энергия: ${energy}`;
+        moonCrystal.classList.remove('active');
+        clearTimeout(moonCrystalTimeout);
+        startMoonCrystalTimer(); 
+        crystalCollectSound.currentTime = 0;
+        crystalCollectSound.play();
+      }
+    });
+
+    function startMoonCrystalTimer() {
+      moonCrystalTimeout = setTimeout(() => {
+        moonCrystal.classList.add('active');
+      }, 30000); 
+    }
+
+    const upgrades = {
+      sun: [
+        { 
+          name: 'Солнечный луч', 
+          cost: 50, 
+          multiplier: 1, 
+          level: 0,
+          effect: () => { 
+            setInterval(() => {
+              energy += 8 * (upgrades.sun[0].level);
+              energyCounter.textContent = `Энергия: ${energy}`;
+            }, 12000); 
+            console.log('Солнечный луч активирован!');
+          } 
+        },
+        { 
+          name: 'Благословение природы', 
+          cost: 100, 
+          multiplier: 1.15, 
+          level: 0,
+          effect: () => { 
+            console.log('Благословение природы усилено!');
+          } 
+        },
+        { 
+          name: 'Храм Солнца', 
+          cost: 250, 
+          multiplier: 1, 
+          level: 0,
+          effect: () => { 
+            setInterval(() => {
+              energy += 0.8;
+              energyCounter.textContent = `Энергия: ${energy}`;
+            }, 1000);
+            console.log('Храм Солнца построен!');
+          } 
+        }
+      ],
+      moon: [
+        { 
+          name: 'Лунная пыль', 
+          cost: 60, 
+          multiplier: 4, 
+          level: 0,
+          effect: () => { 
+            console.log('Лунная пыль активирована!');
+          } 
+        },
+        { 
+          name: 'Шепот теней', 
+          cost: 120, 
+          multiplier: 1.08,
+          level: 0, 
+          effect: () => { 
+            clickMultiplier += 0.08;
+            console.log('Шепот теней усиливает вас!');
+          } 
+        },
+        { 
+          name: 'Алтарь Ночи', 
+          cost: 300, 
+          multiplier: 1, 
+          level: 0,
+          effect: () => { 
+            console.log('Алтарь Ночи построен!');
+          } 
+        }
+      ]
+    };
+
+    function showUpgrades(side) {
+      upgradesContainer.innerHTML = '';
+
+      upgrades[side].forEach(upgrade => {
+        const upgradeButton = document.createElement('button');
+        upgradeButton.classList.add('upgrade-button');
+        upgradeButton.textContent = `${upgrade.name} (${upgrade.cost} энергии)`;
+
+        upgradeButton.addEventListener('click', () => {
+          if (energy >= upgrade.cost) {
+            energy -= upgrade.cost;
+            energyCounter.textContent = `Энергия: ${energy}`;
+
+            upgrade.level++;
+            upgrade.effect();
+
+          } else {
+            alert('Недостаточно энергии!');
+          }
+        });
+
+        upgradesContainer.appendChild(upgradeButton);
+      });
+    }
+
+  </script>
+</body>
+</html>
