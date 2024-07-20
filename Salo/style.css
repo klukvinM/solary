@@ -1,0 +1,106 @@
+/* Общий стиль */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Светло-серый фон */
+  color: #333; /* Темно-серый текст */
+}
+
+header {
+  background-color: #222; /* Темно-серый заголовок */
+  color: #fff; /* Белый текст */
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  width: 50%;
+  text-align: center;
+}
+
+.right {
+  width: 50%;
+  padding-left: 20px;
+}
+
+button {
+  background-color: #007bff; /* Синий цвет кнопок */
+  color: #fff; /* Белый текст */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333; /* Темно-серый футер */
+  color: #fff; /* Белый текст */
+}
+
+/* Стиль для игры */
+#game {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#clicker {
+  margin: 20px auto;
+  width: 200px;
+}
+
+#coin-image {
+  width: 100px;
+  cursor: pointer;
+}
+
+#stats, #upgrades {
+  margin: 20px auto;
+  width: 200px;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ccc; /* Светло-серая рамка */
+  border-radius: 5px; /* Скругленные углы */
+  background-color: #fff; /* Белый фон */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Тень */
+}
+
+#upgrades button {
+  margin: 5px;
+  background-color: #4CAF50; /* Зеленый цвет кнопок улучшений */
+}
+
+/* Дополнительные стили */
+h2, h3 {
+  color: #222; /* Темно-серый заголовок */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 5px 0;
+}
+
+#about .right a button { /* Стиль для кнопки листинга */
+  background-color: #ffcc00; /* Желтый цвет */
+  color: #333; /* Темно-серый текст */
+}
