@@ -1,15 +1,15 @@
-/* Общий стиль */
+/* General styles */
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0; /* Светло-серый фон */
-  color: #333; /* Темно-серый текст */
+  background-color: #f0f0f0; /* Light grey background */
+  color: #333; /* Dark grey text */
 }
 
 header {
-  background-color: #222; /* Темно-серый заголовок */
-  color: #fff; /* Белый текст */
+  background-color: #222; /* Dark grey header */
+  color: #fff; /* White text */
   padding: 20px;
   text-align: center;
 }
@@ -39,8 +39,8 @@ section {
 }
 
 button {
-  background-color: #007bff; /* Синий цвет кнопок */
-  color: #fff; /* Белый текст */
+  background-color: #007bff; /* Blue button color */
+  color: #fff; /* White text */
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -50,45 +50,145 @@ button {
 footer {
   text-align: center;
   padding: 10px;
-  background-color: #333; /* Темно-серый футер */
-  color: #fff; /* Белый текст */
+  background-color: #333; /* Dark grey footer */
+  color: #fff; /* White text */
 }
 
-/* Стиль для игры */
-#game {
+/* Navigation Menu Styles */
+nav {
+  background-color: #333; 
+  color: #fff; 
+  padding: 10px 0; 
+}
+
+nav ul {
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  text-align: center; 
+}
+
+nav li {
+  display: inline-block; 
+  margin: 0 15px; 
+}
+
+nav a {
+  color: #fff; 
+  text-decoration: none; 
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline; 
+}
+
+nav img { /* Style for social media icons */
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+
+/* Carousel Styles */
+#gallery {
+  width: 100%;
+  margin: 50px auto;
+}
+
+.carousel {
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 300px; /* Carousel height */
+}
+
+.carousel-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Adjust image */
+}
+
+.carousel-open:checked + .carousel-item {
+  display: block;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 20px;
+  line-height: 38px; /* Center text */
   text-align: center;
-  margin-bottom: 30px;
-}
-
-#clicker {
-  margin: 20px auto;
-  width: 200px;
-}
-
-#coin-image {
-  width: 100px;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-#stats, #upgrades {
-  margin: 20px auto;
-  width: 200px;
-  text-align: center;
-  padding: 15px;
-  border: 1px solid #ccc; /* Светло-серая рамка */
-  border-radius: 5px; /* Скругленные углы */
-  background-color: #fff; /* Белый фон */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Тень */
+.carousel-control.prev {
+  left: 10px;
 }
 
-#upgrades button {
-  margin: 5px;
-  background-color: #4CAF50; /* Зеленый цвет кнопок улучшений */
+.carousel-control.next {
+  right: 10px;
 }
 
-/* Дополнительные стили */
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.carousel-bullet {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel-open:checked + .carousel-item + .carousel-control.next,
+.carousel-open:checked + .carousel-item + .carousel-control.prev {
+  display: block;
+}
+
+.carousel-open:checked ~ .carousel-indicators li:nth-child(1) .carousel-bullet {
+  background-color: #007bff; /* Active dot color */
+}
+
+#carousel-2:checked ~ .carousel-indicators li:nth-child(2) .carousel-bullet {
+  background-color: #007bff; 
+}
+
+#carousel-3:checked ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+  background-color: #007bff; 
+}
+
+/* Additional Styles */
 h2, h3 {
-  color: #222; /* Темно-серый заголовок */
+  color: #222; /* Dark grey heading */
 }
 
 ul {
@@ -98,9 +198,4 @@ ul {
 
 ul li {
   padding: 5px 0;
-}
-
-#about .right a button { /* Стиль для кнопки листинга */
-  background-color: #ffcc00; /* Желтый цвет */
-  color: #333; /* Темно-серый текст */
 }
