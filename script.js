@@ -1,8 +1,11 @@
 // script.js
 let solCount = 0;
-let clickMultiplier = 1;
+let clickValue = 1;
 let solPerSecond = 0;
+
 const solCounter = document.getElementById('sol-count');
+const clickValueDisplay = document.getElementById('click-value');
+const passiveIncomeDisplay = document.getElementById('passive-income');
 const clickerSun = document.getElementById('clicker-sun');
 const upgradesContainer = document.getElementById('upgrades');
 const clickSound = document.getElementById('clickSound');
@@ -12,8 +15,16 @@ function updateSolCount() {
     solCounter.textContent = solCount;
 }
 
+function updateClickValue() {
+    clickValueDisplay.textContent = clickValue;
+}
+
+function updatePassiveIncome() {
+    passiveIncomeDisplay.textContent = solPerSecond;
+}
+
 clickerSun.addEventListener('click', () => {
-    solCount += clickMultiplier;
+    solCount += clickValue;
     updateSolCount();
     clickSound.currentTime = 0;
     clickSound.play();
@@ -38,27 +49,40 @@ function handleUpgrade(upgrade) {
         updateSolCount();
 
         if (upgradeType === 'click') {
-            const multiplier = parseInt(upgrade.dataset.multiplier);
-            clickMultiplier *= multiplier;
-            if (multiplier === 2) {
-                upgrade.classList.add('disabled');
-            } else {
-                upgrade.dataset.cost = cost * 2;
-                upgrade.querySelector('.cost').textContent = cost * 2;
-            }
+            handleClickUpgrade(upgrade, cost);
         } else if (upgradeType === 'passive') {
-            const solPerSec = parseInt(upgrade.dataset.solPerSecond);
-            solPerSecond += solPerSec;
-            upgrade.dataset.cost = Math.round(cost * 1.5);
-            upgrade.querySelector('.cost').textContent = Math.round(cost * 1.5);
-            upgrade.dataset.solPerSecond = solPerSec * 2; 
-            upgrade.querySelector('p:last-of-type').textContent = `Generates ${solPerSec * 2} SOL per second.`;
+            handlePassiveUpgrade(upgrade, cost);
         }
 
-        checkUpgrades(); 
+        checkUpgrades();
     } else {
         alert("Not enough Solarium for this upgrade!");
     }
+}
+
+function handleClickUpgrade(upgrade, cost) {
+  const multiplier = parseInt(upgrade.dataset.multiplier);
+  clickValue *= multiplier;
+  updateClickValue();
+
+  if (multiplier === 2) {
+      upgrade.classList.add('disabled');
+  } else {
+      upgrade.dataset.cost = Math.round(cost * 1.8); 
+      upgrade.querySelector('.cost').textContent = upgrade.dataset.cost;
+  }
+}
+
+function handlePassiveUpgrade(upgrade, cost) {
+  const solPerSec = parseInt(upgrade.dataset.solPerSecond);
+  solPerSecond += solPerSec;
+  updatePassiveIncome();
+
+  upgrade.dataset.cost = Math.round(cost * 1.5); 
+  upgrade.querySelector('.cost').textContent = upgrade.dataset.cost;
+
+  upgrade.dataset.solPerSecond = solPerSec * 2; 
+  upgrade.querySelector('p:last-of-type').textContent = `Generates ${upgrade.dataset.solPerSecond} SOL per second.`;
 }
 
 function checkUpgrades() {
@@ -83,7 +107,7 @@ checkUpgrades();
 function revealMore() {
     const storyElement = document.getElementById('story');
     storyElement.innerHTML = `
-        Once upon a time, in the vast expanse of the digital cosmos, a new star began to shine - Solarium. Born from the energy of a thousand suns and the dreams of a decentralized future, Solarium is not just another crypto coin; it's a beacon of hope, innovation, and community.
+        Once upon a time, in the vast expanse of the digital cosmos, a new star began to shine - Solarium. <span class="highlight">Born from the energy of a thousand suns</span> and the dreams of a decentralized future, Solarium is not just another crypto coin; it's a beacon of hope, innovation, and community.
 
         Tired of the limitations of traditional finance, a group of visionary developers set out to create a currency that was as limitless as the universe itself. They envisioned a world where financial freedom was a right, not a privilege, and where everyone had the opportunity to reach for the stars.
 

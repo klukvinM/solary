@@ -56,6 +56,45 @@ ul {
   padding: 0;
 }
 
+.features li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+
+.cta {
+  text-align: center;
+  margin: 40px 0; 
+}
+
+.button {
+  display: inline-block;
+  background-color: #fdd835;
+  color: #141414;  
+  padding: 20px 40px;  
+  text-decoration: none;
+  border-radius: 8px; 
+  font-weight: bold;
+  font-size: 1.2em;  
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.button:hover {
+  background-color: #ffeb3b;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px 0;
+  background-color: #000;
+  color: #f5f5f5;
+}
+
 .clicker {
   color: #42a5f5; 
   cursor: pointer;
@@ -67,17 +106,39 @@ ul {
   text-align: center;
 }
 
-#clicker-sun {
-  width: 150px;
-  height: 150px;
-  cursor: pointer;
-  animation: shine 2s linear infinite;
+#game-container {
+display: inline-block;
+position: relative;
+margin-bottom: 20px;
 }
 
-@keyframes shine {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+#sol-display {
+  background-color: rgba(255, 221, 53, 0.1); 
+  padding: 10px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+#clicker-sun {
+  width: 200px; 
+  height: 200px; 
+  cursor: pointer;
+  animation: shineAndPulse 3s linear infinite;
+}
+
+@keyframes shineAndPulse {
+  0% { 
+      transform: scale(1);
+      box-shadow: 0 0 10px #fdd835;  
+  }
+  50% { 
+      transform: scale(1.05); 
+      box-shadow: 0 0 20px #fdd835; 
+  }
+  100% { 
+      transform: scale(1);
+      box-shadow: 0 0 10px #fdd835;
+  }
 }
 
 .upgrade {
@@ -90,9 +151,11 @@ ul {
   transition: transform 0.1s ease;
 }
 
+/* Upgrade Button Hover Effect */
 .upgrade:hover {
   background-color: #333;
-  transform: scale(1.05); 
+  transform: translateY(-3px); /* Move slightly up */
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.2); /* More shadow */
 }
 
 .upgrade.disabled {
@@ -230,9 +293,9 @@ ul {
 
 /* Roadmap Styles */
 .roadmap {
-  background: none; /* Remove section background */
-  box-shadow: none;  /* Remove section shadow */
-  padding: 20px 0;   /* Adjust padding as needed */
+  background: none; 
+  box-shadow: none;
+  padding: 20px 0;  
 }
 
 .timeline {
@@ -244,13 +307,13 @@ ul {
 .timeline::before {
   content: '';
   position: absolute;
-  top: 20px; /* Adjust top position to align with first circle */
-  bottom: 20px; /* Adjust bottom position to align with last circle */
+  top: 20px; 
+  bottom: 20px; 
   left: 50%;
-  width: 4px;  /* Make the line thicker */
-  background-color: #fdd835; /* Use Solarium yellow color */
+  width: 4px;
+  background-color: #fdd835; 
   transform: translateX(-50%);
-  z-index: 1; /* Keep the line behind the content */
+  z-index: 1; 
 }
 
 .timeline li {
@@ -258,17 +321,17 @@ ul {
   position: relative;
 }
 
-.timeline li::before { /* Style for the circle/marker */
+.timeline li::before { 
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30px; /* Increase circle size */
+  width: 30px; 
   height: 30px;
   border-radius: 50%;
-  background-color: #fdd835; /* Use Solarium yellow color */
-  z-index: 2; /* Ensure the circle is above the line */
+  background-color: #fdd835; 
+  z-index: 2; 
 }
 
 .timeline .content { 
@@ -277,36 +340,36 @@ ul {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   position: relative;
-  width: 45%; /* Adjust width as needed */
+  width: 45%; 
 }
 
 .timeline li:nth-child(even) .content { 
-  left: 55%; /* Position on the right side */
+  left: 55%; 
 }
 
 .timeline li:nth-child(odd) .content {
-  left: 5%; /* Position on the left side */
+  left: 5%; 
 }
 
-.timeline li:nth-child(even)::after { /* Connect content to the line */
+.timeline li:nth-child(even)::after { 
   content: '';
   position: absolute;
   top: 50%;
   left: 100%;
-  border-top: 15px solid transparent; /* Adjust arrow size */
+  border-top: 15px solid transparent; 
   border-bottom: 15px solid transparent;
-  border-left: 15px solid #222; /* Match content background */
+  border-left: 15px solid #222;
   transform: translateY(-50%);
 }
 
-.timeline li:nth-child(odd)::after { /* Connect content to the line */
+.timeline li:nth-child(odd)::after { 
   content: '';
   position: absolute;
   top: 50%;
   right: 100%;
-  border-top: 15px solid transparent; /* Adjust arrow size */
+  border-top: 15px solid transparent; 
   border-bottom: 15px solid transparent;
-  border-right: 15px solid #222; /* Match content background */
+  border-right: 15px solid #222;
   transform: translateY(-50%);
 }
 
@@ -315,46 +378,13 @@ ul {
   margin-top: 0; 
 }
 
-footer {
-  text-align: center;
-  margin-top: 30px;
-  padding: 10px 0;
-  background-color: #000;
-  color: #f5f5f5;
-}
-
-/* About Section Text Styles */
 .about p { 
-  text-align: justify; /* Align text to both left and right */
-  line-height: 1.6;  /* Improve readability with line spacing */
+  text-align: justify; 
+  line-height: 1.6;
 }
 
 .about .highlight {
-  background-color: rgba(255, 221, 53, 0.2); /* Subtle yellow highlight */
+  background-color: rgba(255, 221, 53, 0.2); 
   padding: 0.2em 0.5em; 
   border-radius: 3px; 
-}
-
-.cta {
-  text-align: center;
-  margin: 40px 0; /* Add more space above and below */
-}
-
-.button {
-  display: inline-block;
-  background-color: #fdd835;
-  color: #141414; /* Dark text for contrast */ 
-  padding: 20px 40px; /* Larger padding */
-  text-decoration: none;
-  border-radius: 8px; /* More rounded corners */
-  font-weight: bold;
-  font-size: 1.2em;  /* Larger font size */
-  transition: background-color 0.3s, box-shadow 0.3s;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.button:hover {
-  background-color: #ffeb3b;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
-  cursor: pointer;
 }

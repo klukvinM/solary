@@ -16,21 +16,26 @@
         <main>
             <section class="game">
                 <h2>Solarium Clicker</h2>
-                <p>Click the sun to earn Solarium (SOL)!</p>
-                <img src="sun.png" alt="Sun" id="clicker-sun">
-                <p>Solarium: <span id="sol-count">0</span> SOL</p>
+                <div id="game-container">
+                    <img src="sun.png" alt="Sun" id="clicker-sun">
+                    <div id="sol-display">
+                        <p>Solarium: <span id="sol-count">0</span> SOL</p>
+                        <p>Per Click: <span id="click-value">1</span></p>
+                        <p>Per Second: <span id="passive-income">0</span></p>
+                    </div>
+                </div>
 
                 <h3>Upgrades:</h3>
                 <div id="upgrades">
-                    <div class="upgrade" data-upgrade-type="click" data-cost="10" data-multiplier="2">
+                    <div class="upgrade" data-upgrade-type="click" data-cost="10" data-multiplier="2" data-name="Solar Flare">
                         <p>Solar Flare (Cost: <span class="cost">10</span> SOL)</p>
                         <p>Doubles your click power!</p>
                     </div>
-                    <div class="upgrade" data-upgrade-type="click" data-cost="50" data-multiplier="5">
+                    <div class="upgrade" data-upgrade-type="click" data-cost="50" data-multiplier="5" data-name="Solar Wind">
                         <p>Solar Wind (Cost: <span class="cost">50</span> SOL)</p>
                         <p>Increases clicks by 5x!</p>
                     </div>
-                    <div class="upgrade" data-upgrade-type="passive" data-cost="25" data-sol-per-second="1">
+                    <div class="upgrade" data-upgrade-type="passive" data-cost="25" data-sol-per-second="1" data-name="Solar Panel">
                         <p>Solar Panel (Cost: <span class="cost">25</span> SOL)</p>
                         <p>Generates 1 SOL per second.</p>
                     </div>
@@ -55,10 +60,10 @@
                 <h2 class="section-heading">What is Solarium?</h2> 
                 <div class="wavy-underline"></div> 
                 <p id="story">
-                  Once upon a time, in the vast expanse of the digital cosmos, a new star began to shine - Solarium. <span class="highlight">Born from the energy of a thousand suns</span> and the dreams of a decentralized future, Solarium is not just another crypto coin; it's a beacon of hope, innovation, and community... 
-                  <span class="clicker" onclick="revealMore()">Read More</span>
+                    Once upon a time, in the vast expanse of the digital cosmos, a new star began to shine - Solarium. <span class="highlight">Born from the energy of a thousand suns</span> and the dreams of a decentralized future, Solarium is not just another crypto coin; it's a beacon of hope, innovation, and community... 
+                    <span class="clicker" onclick="revealMore()">Read More</span>
                 </p> 
-              </section>
+            </section>
 
             <section class="features">
                 <h2 class="section-heading">Features</h2> <div class="wavy-underline"></div> 
@@ -135,7 +140,6 @@
             <section class="cta">
                 <a href="#" class="button">Buy Solarium Now</a>
             </section>
-
 
         </main>
 
