@@ -96,7 +96,6 @@ header img {
 }
 
 
-
 /* Clicker Game Styles */
 .game {
   text-align: center;
@@ -377,7 +376,7 @@ footer {
 @keyframes shineAndPulse {
   0% { 
       transform: scale(1);
-      box-shadow: 0 0 10px #fdd835; 
+      box-shadow: 0 0 10px #fcd836; 
   }
   50% { 
       transform: scale(1.05);
@@ -420,4 +419,47 @@ footer {
 .right-image {
   right: 0; 
   transform: translateX(50%); 
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Style for Social Buttons */
+.social-button {
+  display: inline-block;
+  background-color: #222; /* Dark background */
+  color: #000000;       /* Light text */
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s ease; /* Smooth transitions */
+}
+
+.social-button:hover {
+  background-color: #333; /* Slightly darker background on hover */
+  transform: translateY(-2px); /* Move slightly up on hover */
+}
+
+/* Specific button styles (optional) */
+.social-button.telegram {
+  background-color: #fdd835; /* Telegram blue */
+}
+
+.social-button.telegram:hover {
+  background-color: #fdd835; /* Darker Telegram blue */
+}
+
+.social-button.twitter {
+  background-color: #fdd835; /* Twitter blue */
+}
+
+.social-button.twitter:hover {
+  background-color: #fdd835; /* Darker Twitter blue */
+}
+
+.social-button i {
+    margin-right: 5px; /* Space between icon and text */
 }
