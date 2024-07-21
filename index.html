@@ -7,146 +7,158 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Solarium <img src="logo.png" /*alt="Solarium Logo"*/ id="logo"></h1> 
+
+    <header>
+        <div class="container">
+            <h1>Solarium <img src="logo.png" alt="Solarium Logo" id="logo"></h1> 
             <p class="animated-text">Shine Bright in the Crypto Universe</p> 
-        </header>
+        </div>
+    </header>
 
-        <main>
-            <section class="game">
-                <h2>Solarium Clicker</h2>
-                <div id="game-container">
-                    <img src="mine.png" alt="Sun" id="clicker-sun">
-                    <div id="sol-display">
-                        <p>Solarium: <span id="sol-count">0</span> SOL</p>
-                        <p>Per Click: <span id="click-value">1</span></p>
-                        <p>Per Second: <span id="passive-income">0</span></p>
-                    </div>
+    <section class="hero"> 
+        <div class="container">
+            <div class="hero-content">
+                <h2>Welcome to the Solarium Galaxy</h2>
+                <p>Experience the future of decentralized finance with Solarium. A community-driven, secure, and efficient cryptocurrency that empowers individuals.</p>
+                <a href="#" class="button">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container"> 
+        <section class="game">
+            <h2>Solarium Clicker</h2>
+            <div id="game-container">
+                <img src="mine.png" alt="Sun" id="clicker-sun">
+                <div id="sol-display">
+                    <p>Solarium: <span id="sol-count">0</span> SOL</p>
+                    <p>Per Click: <span id="click-value">1</span></p>
+                    <p>Per Second: <span id="passive-income">0</span></p>
                 </div>
+            </div>
 
-                <h3>Upgrades:</h3>
-                <div id="upgrades">
-                    <div class="upgrade" data-upgrade-type="click" data-cost="10" data-multiplier="2" data-name="Solar Flare">
-                        <p>Solar Flare (Cost: <span class="cost">10</span> SOL)</p>
-                        <p>Doubles your click power!</p>
-                    </div>
-                    <div class="upgrade" data-upgrade-type="click" data-cost="50" data-multiplier="5" data-name="Solar Wind">
-                        <p>Solar Wind (Cost: <span class="cost">50</span> SOL)</p>
-                        <p>Increases clicks by 5x!</p>
-                    </div>
-                    <div class="upgrade" data-upgrade-type="passive" data-cost="25" data-sol-per-second="1" data-name="Solar Panel">
-                        <p>Solar Panel (Cost: <span class="cost">25</span> SOL)</p>
-                        <p>Generates 1 SOL per second.</p>
-                    </div>
+            <h3>Upgrades:</h3>
+            <div id="upgrades">
+                <div class="upgrade" data-upgrade-type="click" data-cost="10" data-multiplier="2" data-name="Solar Flare">
+                    <p>Solar Flare (Cost: <span class="cost">10</span> SOL)</p>
+                    <p>Doubles your click power!</p>
                 </div>
-            </section>
-
-            <section class="gallery">
-                <h2>Explore the Solarium Galaxy</h2>
-                <div class="gallery-container">
-                    <div class="gallery-track">
-                        <img src="gallery1.png" alt="Image 1">
-                        <img src="gallery2.png" alt="Image 2">
-                        <img src="gallery3.png" alt="Image 3">
-                        <img src="gallery4.png" alt="Image 1">
-                        <img src="gallery5.png" alt="Image 2">
-                        <img src="gallery1.png" alt="Image 3">
-                    </div>
+                <div class="upgrade" data-upgrade-type="click" data-cost="50" data-multiplier="5" data-name="Solar Wind">
+                    <p>Solar Wind (Cost: <span class="cost">50</span> SOL)</p>
+                    <p>Increases clicks by 5x!</p>
                 </div>
-            </section>
+                <div class="upgrade" data-upgrade-type="passive" data-cost="25" data-sol-per-second="1" data-name="Solar Panel">
+                    <p>Solar Panel (Cost: <span class="cost">25</span> SOL)</p>
+                    <p>Generates 1 SOL per second.</p>
+                </div>
+            </div>
+        </section>
 
-            <section class="about">
-                <h2 class="section-heading">What is Solarium?</h2> 
-                <div class="wavy-underline"></div> 
-                <p id="story">
-                    Once upon a time, in the vast expanse of the digital cosmos, a new star began to shine - Solarium. <span class="highlight">Born from the energy of a thousand suns</span> and the dreams of a decentralized future, Solarium is not just another crypto coin; it's a beacon of hope, innovation, and community... 
-                    <span class="clicker" onclick="revealMore()">Read More</span>
-                </p> 
-            </section>
+        <section class="features">
+            <h2 class="section-heading">Features</h2> <div class="wavy-underline"></div> 
+            <ul>
+                <li>
+                    <div class="icon-container">
+                        <span class="icon">🚀</span> 
+                    </div>
+                    <div class="text-content">
+                        <h3>Decentralized & Secure</h3>
+                        <p>Like a constellation, Solarium is spread across a network, making it resilient and secure.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon-container">
+                        <span class="icon">👨‍👩‍👧‍👦</span>
+                    </div>
+                    <div class="text-content">
+                        <h3>Community Driven</h3>
+                        <p>Powered by a passionate community, Solarium's destiny is in the hands of its holders.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon-container">
+                        <span class="icon">⚡️</span>
+                    </div>
+                    <div class="text-content">
+                        <h3>Fast & Efficient</h3>
+                        <p>With lightning-fast transaction speeds, Solarium keeps your portfolio shining bright.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon-container">
+                        <span class="icon">💰</span> 
+                    </div>
+                    <div class="text-content">
+                        <h3>Future of Finance</h3>
+                        <p>Solarium aims to illuminate the path towards a more inclusive and accessible financial system.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
-            <section class="features">
-                <h2 class="section-heading">Features</h2> <div class="wavy-underline"></div> 
-                <ul>
-                    <li>
-                        <div class="icon-container">
-                            <span class="icon">🚀</span> 
-                        </div>
-                        <div class="text-content">
-                            <h3>Decentralized & Secure</h3>
-                            <p>Like a constellation, Solarium is spread across a network, making it resilient and secure.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="icon-container">
-                            <span class="icon">👨‍👩‍👧‍👦</span>
-                        </div>
-                        <div class="text-content">
-                            <h3>Community Driven</h3>
-                            <p>Powered by a passionate community, Solarium's destiny is in the hands of its holders.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="icon-container">
-                            <span class="icon">⚡️</span>
-                        </div>
-                        <div class="text-content">
-                            <h3>Fast & Efficient</h3>
-                            <p>With lightning-fast transaction speeds, Solarium keeps your portfolio shining bright.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="icon-container">
-                            <span class="icon">💰</span> 
-                        </div>
-                        <div class="text-content">
-                            <h3>Future of Finance</h3>
-                            <p>Solarium aims to illuminate the path towards a more inclusive and accessible financial system.</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
+        <section class="about">
+            <h2 class="section-heading">What is Solarium?</h2> 
+            <div class="wavy-underline"></div> 
+            <p id="story">
+                Once upon a time, in the vast expanse of the digital cosmos, a new star began to shine - Solarium. <span class="highlight">Born from the energy of a thousand suns</span> and the dreams of a decentralized future, Solarium is not just another crypto coin; it's a beacon of hope, innovation, and community... 
+                <span class="clicker" onclick="revealMore()">Read More</span>
+            </p> 
+        </section>
 
-            <section class="roadmap">
-                <h2 class="section-heading">Roadmap</h2> <div class="wavy-underline"></div> 
-                <ul class="timeline">
-                    <li>
-                        <div class="content">
-                            <h3>Phase 1: Genesis</h3>
-                            <p>Token launch and listing on decentralized exchanges. We ignite the Solarium star!</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content">
-                            <h3>Phase 2: Stellar Expansion</h3>
-                            <p>Marketing, community growth, and partnerships to expand the Solarium galaxy.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content">
-                            <h3>Phase 3: Supernova</h3>
-                            <p>Major exchange listings and the development of groundbreaking DeFi applications.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content">
-                            <h3>Phase 4: Illumination</h3>
-                            <p>Solarium becomes a leading force in the crypto universe, empowering individuals and illuminating the future of finance.</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
+        <section class="roadmap">
+            <h2 class="section-heading">Roadmap</h2> <div class="wavy-underline"></div> 
+            <ul class="timeline">
+                <li>
+                    <div class="content">
+                        <h3>Phase 1: Genesis</h3>
+                        <p>Token launch and listing on decentralized exchanges. We ignite the Solarium star!</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Phase 2: Stellar Expansion</h3>
+                        <p>Marketing, community growth, and partnerships to expand the Solarium galaxy.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Phase 3: Supernova</h3>
+                        <p>Major exchange listings and the development of groundbreaking DeFi applications.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Phase 4: Illumination</h3>
+                        <p>Solarium becomes a leading force in the crypto universe, empowering individuals and illuminating the future of finance.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
-            <section class="cta">
-                <a href="#" class="button">Buy Solarium Now</a>
-            </section>
+        <section class="gallery">
+            <h2>Explore the Solarium Galaxy</h2>
+            <div class="gallery-container">
+                <div class="gallery-track">
+                    <img src="gallery1.png" alt="Image 1">
+                    <img src="gallery2.png" alt="Image 2">
+                    <img src="gallery3.png" alt="Image 3">
+                    <img src="gallery4.png" alt="Image 1">
+                    <img src="gallery5.png" alt="Image 2">  
+                </div>
+               
+            </div>
+        </section>
 
-        </main>
+        <section class="cta">
+            <a href="#" class="button">Buy Solarium Now</a>
+        </section>
+    </main>
 
-        <footer>
-            <p>© 2024 Solarium. All rights reserved.</p>
-        </footer>
-    </div>
+    <footer>
+        <div class="container">
+            <p>© 2023 Solarium. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
     <audio id="clickSound" src="click.wav" preload="auto"></audio>

@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: #141414;
   color: #f5f5f5;
+  line-height: 1.6; /* Improves overall readability */
 }
 
 .container {
@@ -13,92 +14,87 @@ body {
   padding: 20px;
 }
 
+/* Header Styles */
 header {
-  text-align: center;
   background-color: #222;
-  padding: 30px 0;
-  border-bottom: 1px solid #444;
-  margin-bottom: 30px;
+  padding: 20px 0;
+  text-align: center;
+  margin-bottom: 40px; /* Add more spacing between header and content */
 }
 
 header h1 {
-  margin-top: 0;
-  font-size: 3em;
+  margin: 0;
+  font-size: 2.5em; 
   color: #fdd835;
 }
 
 header img {
-  height: 80px;
+  height: 60px;
   vertical-align: middle;
   margin-left: 10px;
   animation: rotate 5s linear infinite;
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Hero Section (Large intro section) */
+.hero {
+  background-image: url('hero-background.jpg'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0; 
+  text-align: center;
+  color: white; 
 }
 
-section {
-  background-color: #222;
-  padding: 20px;
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  font-size: 3em;
   margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
-h2 {
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+/* Section Headings with Wavy Underlines */
+.section-heading {
   color: #fdd835;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-.features li {
-  margin-bottom: 10px;
-  padding-left: 20px;
   position: relative;
-}
-
-
-.cta {
-  text-align: center;
-  margin: 40px 0; 
-}
-
-.button {
   display: inline-block;
-  background-color: #fdd835;
-  color: #141414;  
-  padding: 20px 40px;  
-  text-decoration: none;
-  border-radius: 8px; 
-  font-weight: bold;
-  font-size: 1.2em;  
-  transition: background-color 0.3s, box-shadow 0.3s;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 20px;
 }
 
-.button:hover {
-  background-color: #ffeb3b;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+.wavy-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(270deg, #fdd835, #c6a90a, #fdd835);
+  background-size: 400% 400%;
+  border-radius: 5px;
+  animation: wave 5s ease-in-out infinite;
 }
 
-footer {
-  text-align: center;
-  margin-top: 30px;
-  padding: 10px 0;
-  background-color: #000;
-  color: #f5f5f5;
+@keyframes wave {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
 }
 
-.clicker {
-  color: #42a5f5; 
-  cursor: pointer;
-  text-decoration: underline;
+/* General Animations */
+.animated-text {
+  animation: glow 3s linear infinite;
+}
+
+@keyframes glow {
+0%, 100% { text-shadow: 0 0 10px #fdd835; } 
+50% { text-shadow: 0 0 20px #fdd835; } 
 }
 
 /* Clicker Game Styles */
@@ -107,13 +103,13 @@ footer {
 }
 
 #game-container {
-display: inline-block;
-position: relative;
-margin-bottom: 20px;
+  display: inline-block; 
+  position: relative;
+  margin-bottom: 20px;
 }
 
 #sol-display {
-  background-color: rgba(255, 221, 53, 0.1); 
+  background-color: rgba(255, 221, 53, 0.1);
   padding: 10px;
   border-radius: 5px;
   text-align: left;
@@ -123,7 +119,7 @@ margin-bottom: 20px;
   width: 200px; 
   height: 200px; 
   cursor: pointer;
-  animation: shineAndPulse 3s linear infinite;
+  animation: shineAndPulse 3s linear infinite; 
 }
 
 @keyframes shineAndPulse {
@@ -148,14 +144,13 @@ margin-bottom: 20px;
   border-radius: 8px;
   cursor: pointer;
   color: #f5f5f5;
-  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Add box-shadow to transition */
 }
 
-/* Upgrade Button Hover Effect */
 .upgrade:hover {
   background-color: #333;
-  transform: translateY(-3px); /* Move slightly up */
-  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.2); /* More shadow */
+  transform: translateY(-3px); 
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.2); 
 }
 
 .upgrade.disabled {
@@ -164,91 +159,54 @@ margin-bottom: 20px;
   transform: none; 
 }
 
-/* Gallery Styles */
-.gallery {
-  overflow: hidden; 
-  margin-bottom: 20px;
-  position: relative; 
+/* About Section */
+.about {
+  text-align: center;
 }
 
-.gallery-container {
-  width: 100%;
-  height: 200px; 
-  overflow: hidden; 
+.about p {
+  text-align: justify; 
+  line-height: 1.6; 
+  max-width: 700px; 
+  margin: 0 auto; 
 }
 
-.gallery-track {
-  display: flex;
-  width: 200%; 
-  animation: scrollInfinite 15s linear infinite;
+.about .highlight {
+  background-color: rgba(255, 221, 53, 0.2);
+  padding: 0.2em 0.5em; 
+  border-radius: 3px; 
 }
 
-.gallery-track img {
-  width: 16.666%; 
-  height: 100%;
-  object-fit: cover;
+.clicker {
+  color: #42a5f5; 
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-@keyframes scrollInfinite {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(-50%); } 
-  100% { transform: translateX(0); } 
-}
-
-/* General Animations */
-.animated-text {
-  animation: glow 3s linear infinite;
-}
-
-@keyframes glow {
-0%, 100% { text-shadow: 0 0 10px #fdd835; } 
-50% { text-shadow: 0 0 20px #fdd835; } 
-}
-
-/* Section Headings with Wavy Underlines */
-.section-heading {
-  color: #fdd835;
-  position: relative;
-  display: inline-block; /* Important for the underline */
-  margin-bottom: 20px; /* Space for the underline */
-}
-
-.wavy-underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px; /* Adjust underline thickness */
-  background: linear-gradient(270deg, #fdd835, #c6a90a, #fdd835);
-  background-size: 400% 400%;
-  border-radius: 5px; /* Optional: Rounded corners */
-  animation: wave 5s ease-in-out infinite;
-}
-
-@keyframes wave {
-0% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-100% { background-position: 0% 50%; }
-}
-
-/* Features Section Animation */
+/* Features Section */
 .features ul {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-  justify-content: space-around; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
 }
 
 .features li {
-  width: 45%; /* Adjust width for two-column layout */
+  width: 48%; 
   margin-bottom: 20px;
   background-color: #222;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   position: relative; 
-  display: flex; /* Make li a flex container */
-  align-items: center; /* Align icon and text vertically */
-  overflow: hidden; /* Hide icon initially for sliding animation */
+  display: flex; 
+  align-items: center; 
+  overflow: hidden; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+}
+
+.features li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 8px rgba(255, 255, 255, 0.2);
 }
 
 .features .icon-container {
@@ -261,13 +219,13 @@ margin-bottom: 20px;
   align-items: center;
   margin-right: 20px;
   position: relative;
-  left: -80px; /* Initial position for slide-in effect */
-  opacity: 0;     /* Initially hide the icon */
+  left: -80px;
+  opacity: 0;
   transition: left 0.5s ease, opacity 0.5s ease; 
 }
 
 .features li:hover .icon-container {
-  left: 0;     /* Slide in on hover */
+  left: 0; 
   opacity: 1; 
 }
 
@@ -276,26 +234,11 @@ margin-bottom: 20px;
   color: #fdd835;
 }
 
-.features .text-content {
-  /* No specific styling needed, but you can add some if you want */
-}
-
-/* Button Pulsating Animation */
-.button {
-  animation: pulse 1.5s infinite; 
-}
-
-@keyframes pulse {
-0% { transform: scale(1); } 
-50% { transform: scale(1.05); } 
-100% { transform: scale(1); }
-}
-
 /* Roadmap Styles */
 .roadmap {
-  background: none; 
+  background: none;
   box-shadow: none;
-  padding: 20px 0;  
+  padding: 20px 0; 
 }
 
 .timeline {
@@ -310,7 +253,7 @@ margin-bottom: 20px;
   top: 20px; 
   bottom: 20px; 
   left: 50%;
-  width: 4px;
+  width: 4px; 
   background-color: #fdd835; 
   transform: translateX(-50%);
   z-index: 1; 
@@ -348,7 +291,7 @@ margin-bottom: 20px;
 }
 
 .timeline li:nth-child(odd) .content {
-  left: 5%; 
+  left: 5%;
 }
 
 .timeline li:nth-child(even)::after { 
@@ -358,7 +301,7 @@ margin-bottom: 20px;
   left: 100%;
   border-top: 15px solid transparent; 
   border-bottom: 15px solid transparent;
-  border-left: 15px solid #222;
+  border-left: 15px solid #222; 
   transform: translateY(-50%);
 }
 
@@ -369,7 +312,7 @@ margin-bottom: 20px;
   right: 100%;
   border-top: 15px solid transparent; 
   border-bottom: 15px solid transparent;
-  border-right: 15px solid #222;
+  border-right: 15px solid #222; 
   transform: translateY(-50%);
 }
 
@@ -378,13 +321,72 @@ margin-bottom: 20px;
   margin-top: 0; 
 }
 
-.about p { 
-  text-align: justify; 
-  line-height: 1.6;
+/* Gallery Styles */
+.gallery {
+  overflow: hidden; 
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: none; /* Remove default box shadow */
+  background: none; /* Remove default background color */
+  padding: 0; /* Remove default padding */
 }
 
-.about .highlight {
-  background-color: rgba(255, 221, 53, 0.2); 
-  padding: 0.2em 0.5em; 
-  border-radius: 3px; 
+.gallery-container {
+  width: 100%;
+  height: 300px; 
+  overflow: hidden; 
 }
+
+.gallery-track {
+  display: flex;
+  width: 200%; 
+  animation: scrollInfinite 20s linear infinite; /* Adjust scrolling speed */
+}
+
+.gallery-track img {
+  width: 16.666%; 
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes scrollInfinite {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-50%); } 
+  100% { transform: translateX(0); } 
+}
+
+/* Button Styles */
+.button {
+  display: inline-block;
+  background-color: #fdd835;
+  color: #141414; 
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s, box-shadow 0.3s; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  animation: pulse 1.5s infinite; /* Button pulsing animation */
+}
+
+.button:hover {
+  background-color: #ffeb3b; 
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); 
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Footer Styles */
+footer {
+  background-color: #000;
+  color: #f5f5f5;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px; /* Add more space above the footer */
+}
+
