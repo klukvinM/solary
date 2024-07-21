@@ -3,8 +3,8 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #141414; /* Dark background */
-  color: #f5f5f5; /* Light text */
+  background-color: #141414;
+  color: #f5f5f5;
 }
 
 .container {
@@ -24,14 +24,14 @@ header {
 header h1 {
   margin-top: 0;
   font-size: 3em;
-  color: #fdd835; /* Solarium yellow */
+  color: #fdd835;
 }
 
 header img {
   height: 80px;
-  vertical-align: middle; 
+  vertical-align: middle;
   margin-left: 10px;
-  animation: rotate 5s linear infinite; /* Add rotation animation */
+  animation: rotate 5s linear infinite;
 }
 
 @keyframes rotate {
@@ -44,11 +44,11 @@ section {
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); 
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 h2 {
-  color: #fdd835; 
+  color: #fdd835;
 }
 
 ul {
@@ -58,15 +58,15 @@ ul {
 
 .features li {
   margin-bottom: 10px;
-  padding-left: 20px; 
+  padding-left: 20px;
   position: relative;
 }
 
-.features li::before { 
-  content: '\2726'; /* Star icon */
+.features li::before {
+  content: '\2726'; 
   position: absolute;
   left: 0;
-  color: #fdd835; 
+  color: #fdd835;
 }
 
 .timeline {
@@ -75,16 +75,33 @@ ul {
 }
 
 .timeline::before {
-  /* Same as before */
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: #ddd;
+  transform: translateX(-50%);
 }
 
 .timeline li {
-  /* Same as before */
+  padding: 20px 0;
+  position: relative;
+  clear: both;
 }
 
 .timeline li::after {
-  /* Same as before */
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%; 
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
   background-color: #fdd835;
+  z-index: 1; 
 }
 
 .cta {
@@ -93,8 +110,8 @@ ul {
 
 .button {
   display: inline-block;
-  background-color: #fdd835; 
-  color: #222; /* Dark text for contrast */
+  background-color: #fdd835;
+  color: #222; 
   padding: 15px 30px;
   text-decoration: none;
   border-radius: 5px;
@@ -103,7 +120,7 @@ ul {
 }
 
 .button:hover {
-  background-color: #ffeb3b; /* Brighter yellow on hover */
+  background-color: #ffeb3b; 
   cursor: pointer;
 }
 
@@ -115,9 +132,8 @@ footer {
   color: #f5f5f5;
 }
 
-/* Clicker styling */
 .clicker {
-  color: #42a5f5; /* Blue color for the clickable text */
+  color: #42a5f5; 
   cursor: pointer;
   text-decoration: underline;
 }
@@ -131,26 +147,150 @@ footer {
   width: 150px;
   height: 150px;
   cursor: pointer;
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.upgrade {
+  background-color: #222;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #f5f5f5;
+  transition: transform 0.1s ease;
+}
+
+.upgrade:hover {
+  background-color: #333;
+  transform: scale(1.05); 
+}
+
+.upgrade.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none; 
 }
 
 /* Gallery Styles */
 .gallery {
-  overflow: hidden; /* Hide scrollbar but allow scrolling */
+  overflow: hidden; 
   margin-bottom: 20px;
+  position: relative; 
 }
 
 .gallery-container {
-  display: flex;
-  animation: scroll 15s linear infinite; /* Adjust scroll speed here */
+  width: 100%;
+  height: 200px; 
+  overflow: hidden; 
 }
 
-.gallery-container img {
-  width: 33.33%; /* 3 images per slide */
-  height: 200px;
+.gallery-track {
+  display: flex;
+  width: 200%; 
+  animation: scrollInfinite 15s linear infinite;
+}
+
+.gallery-track img {
+  width: 16.666%; 
+  height: 100%;
   object-fit: cover;
 }
 
-@keyframes scroll {
+@keyframes scrollInfinite {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); } /* Scroll full width */
+  50% { transform: translateX(-50%); } 
+  100% { transform: translateX(0); } 
+}
+
+/* Roadmap Styles */
+.roadmap {
+  background: none; /* Remove section background */
+  box-shadow: none;  /* Remove section shadow */
+  padding: 20px 0;   /* Adjust padding as needed */
+}
+
+.timeline {
+  position: relative;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 20px; /* Adjust top position to align with first circle */
+  bottom: 20px; /* Adjust bottom position to align with last circle */
+  left: 50%;
+  width: 4px;  /* Make the line thicker */
+  background-color: #fdd835; /* Use Solarium yellow color */
+  transform: translateX(-50%);
+  z-index: 1; /* Keep the line behind the content */
+}
+
+.timeline li {
+  padding: 20px 0;
+  position: relative;
+}
+
+.timeline li::before { /* Style for the circle/marker */
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px; /* Increase circle size */
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fdd835; /* Use Solarium yellow color */
+  z-index: 2; /* Ensure the circle is above the line */
+}
+
+.timeline .content { 
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  position: relative;
+  width: 45%; /* Adjust width as needed */
+}
+
+.timeline li:nth-child(even) .content { 
+  left: 55%; /* Position on the right side */
+}
+
+.timeline li:nth-child(odd) .content {
+  left: 5%; /* Position on the left side */
+}
+
+.timeline li:nth-child(even)::after { /* Connect content to the line */
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  border-top: 15px solid transparent; /* Adjust arrow size */
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #222; /* Match content background */
+  transform: translateY(-50%);
+}
+
+.timeline li:nth-child(odd)::after { /* Connect content to the line */
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  border-top: 15px solid transparent; /* Adjust arrow size */
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid #222; /* Match content background */
+  transform: translateY(-50%);
+}
+
+.timeline h3 {
+  color: #fdd835;
+  margin-top: 0; 
 }

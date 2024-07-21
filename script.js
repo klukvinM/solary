@@ -1,12 +1,84 @@
 // script.js
 let solCount = 0;
+let clickMultiplier = 1;
+let solPerSecond = 0;
 const solCounter = document.getElementById('sol-count');
 const clickerSun = document.getElementById('clicker-sun');
+const upgradesContainer = document.getElementById('upgrades');
+const clickSound = document.getElementById('clickSound');
+const upgradeSound = document.getElementById('upgradeSound');
+
+function updateSolCount() {
+    solCounter.textContent = solCount;
+}
 
 clickerSun.addEventListener('click', () => {
-    solCount++;
-    solCounter.textContent = solCount;
+    solCount += clickMultiplier;
+    updateSolCount();
+    clickSound.currentTime = 0;
+    clickSound.play();
+    checkUpgrades();
 });
+
+upgradesContainer.addEventListener('click', (event) => {
+    const upgrade = event.target.closest('.upgrade');
+    if (upgrade) {
+        handleUpgrade(upgrade);
+    }
+});
+
+function handleUpgrade(upgrade) {
+    const cost = parseInt(upgrade.dataset.cost);
+    const upgradeType = upgrade.dataset.upgradeType;
+
+    if (solCount >= cost) {
+        solCount -= cost;
+        upgradeSound.currentTime = 0;
+        upgradeSound.play();
+        updateSolCount();
+
+        if (upgradeType === 'click') {
+            const multiplier = parseInt(upgrade.dataset.multiplier);
+            clickMultiplier *= multiplier;
+            if (multiplier === 2) {
+                upgrade.classList.add('disabled');
+            } else {
+                upgrade.dataset.cost = cost * 2;
+                upgrade.querySelector('.cost').textContent = cost * 2;
+            }
+        } else if (upgradeType === 'passive') {
+            const solPerSec = parseInt(upgrade.dataset.solPerSecond);
+            solPerSecond += solPerSec;
+            upgrade.dataset.cost = Math.round(cost * 1.5);
+            upgrade.querySelector('.cost').textContent = Math.round(cost * 1.5);
+            upgrade.dataset.solPerSecond = solPerSec * 2; 
+            upgrade.querySelector('p:last-of-type').textContent = `Generates ${solPerSec * 2} SOL per second.`;
+        }
+
+        checkUpgrades(); 
+    } else {
+        alert("Not enough Solarium for this upgrade!");
+    }
+}
+
+function checkUpgrades() {
+    const upgrades = document.querySelectorAll('.upgrade');
+    upgrades.forEach(upgrade => {
+        const cost = parseInt(upgrade.dataset.cost);
+        if (solCount >= cost) {
+            upgrade.classList.remove('disabled');
+        } else {
+            upgrade.classList.add('disabled');
+        }
+    });
+}
+
+setInterval(() => {
+    solCount += solPerSecond;
+    updateSolCount();
+}, 1000);
+
+checkUpgrades(); 
 
 function revealMore() {
     const storyElement = document.getElementById('story');
