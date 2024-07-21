@@ -95,17 +95,7 @@ header img {
   margin-bottom: 20px;
 }
 
-.wavy-underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(270deg, #fdd835, #c6a90a, #fdd835);
-  background-size: 400% 400%;
-  border-radius: 5px;
-  animation: wave 5s ease-in-out infinite;
-}
+
 
 /* Clicker Game Styles */
 .game {
