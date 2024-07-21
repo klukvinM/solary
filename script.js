@@ -11,6 +11,40 @@ const upgradesContainer = document.getElementById('upgrades');
 const clickSound = document.getElementById('clickSound');
 const upgradeSound = document.getElementById('upgradeSound');
 
+
+function saveGameData() {
+    localStorage.setItem('solCount', solCount);
+    localStorage.setItem('clickValue', clickValue);
+    localStorage.setItem('solPerSecond', solPerSecond);
+    // Save other important game variables here
+}
+
+// Function to load game data from local storage
+function loadGameData() {
+    const savedSolCount = localStorage.getItem('solCount');
+    const savedClickValue = localStorage.getItem('clickValue');
+    const savedSolPerSecond = localStorage.getItem('solPerSecond');
+
+    // Load other game variables
+
+    if (savedSolCount) {
+        solCount = parseInt(savedSolCount); // Load saved value if it exists
+    }
+    if (savedClickValue) {
+        clickValue = parseInt(savedClickValue);
+    }
+    if (savedSolPerSecond) {
+        solPerSecond = parseInt(savedSolPerSecond);
+    }
+    // Load other variables 
+}
+
+// Call saveGameData() at regular intervals (e.g., every 5 seconds)
+setInterval(saveGameData, 5000); // Save every 5 seconds
+
+// Call loadGameData() when the page loads
+window.addEventListener('load', loadGameData); 
+
 function updateSolCount() {
     solCounter.textContent = solCount;
 }
